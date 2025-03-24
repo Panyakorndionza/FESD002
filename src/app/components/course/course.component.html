@@ -1,0 +1,112 @@
+
+<div class="m-5">
+  <h5>Courses Management</h5>
+  <div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>course_id</th>
+          <th>title</th>
+          <th>description</th>
+          <th>duration</th>
+          <th>lecturer</th>
+          <th>category</th>
+          <th>promote</th>
+          <th>course_image</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (course of courses; track course.course_id) {
+          <tr>
+            <td class="text-center">{{course.course_id}}</td>
+            <td>{{course.title}}</td>
+            <td>{{course.description}}</td>
+            <td class="text-center">{{course.duration}}</td>
+            <td>{{course.lecturer}}</td>
+            <td>{{course.category}}</td>
+            <td class="text-center">{{course.promote}}</td>
+            <td>{{course.course_image}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="mb-2">
+    <label for="inputCourseId" class="form-label">Course ID: </label>
+    <input type="number" id="inputCourseId" class="form-control" [(ngModel)]="course!.course_id">
+    {{course!.course_id}}
+  </div>
+  <div class="mb-2">
+    <label for="title" class="form-label">Title: </label>
+    <input type="text" id="title" class="form-control" [(ngModel)]="course!.title">
+    {{course!.title}}
+  </div>
+  <div class="mb-2">
+    <label for="Description" class="form-label">Description: </label>
+    <input type="text" id="Description" class="form-control" [(ngModel)]="course!.description">
+    {{course!.description}}
+  </div>
+  <div class="mb-2">
+    <label for="Lecturer" class="form-label">Lecturer: </label>
+    <input type="text" id="Lecturer" class="form-control" [(ngModel)]="course!.lecturer">
+    {{course!.lecturer}}
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <label for="Duration" class="form-label">Duration: </label>
+      <input type="number" id="Duration" class="form-control" [(ngModel)]="course!.duration">
+      {{course!.duration}}
+    </div>
+    <div class="col-4">
+      <label for="Category" class="form-label">Category: </label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="course!.category">
+        <option value="Basic" selected>Basic</option>
+        <option value="Graphics">Graphics</option>
+        <option value="Coding">Coding</option>
+        <option value="Other">Other</option>
+      </select>
+      {{course!.category}}
+    </div>
+    <div class="col-4">
+      <label for="Promote" class="form-label">Promote: </label>
+      <div class="row">
+        <div class="form-check col-6">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="1" [(ngModel)]="course!.promote">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Yes
+          </label>
+        </div>
+        <div class="form-check col-6 mb-4">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="0" [(ngModel)]="course!.promote">
+          <label class="form-check-label" for="flexRadioDefault2">
+            No
+          </label>
+        </div>
+        {{course!.promote}}
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-3">
+      <button class="btn btn-success me-2" (click)="createCourse()">Add</button>
+      <button class="btn btn-warning me-2" (click)="updateCourse()">Update</button>
+      <button class="btn btn-danger" (click)="deleteCourse()">Delete</button>
+    </div>
+  </div>
+  <div class="row mb-5">
+    @if(this.statusSuccess) {
+      <div class="alert alert-success" role="alert">
+        <p>
+          สำเร็จ
+        </p>
+      </div>
+    }
+    @if(this.statusUnsuccess) {
+      <div class="alert alert-danger" role="alert">
+        <p>
+          ไม่สำเร็จ
+        </p>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="m-5">
+  @for (course of courses; track course.course_id) {
+  <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+      <div class="col-md-4 d-flex justify-content-center">
+        <img [src]="'/' + course?.course_image" class="card-img-top w-50">
+      </div>
+      <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ course.title }}</h5>
+            <p class="card-text">{{ course.description }}</p>
+            <p class="card-text">{{ course.lecturer }}</p>
+            <p class="card-text">{{ course.duration }} ซม.</p>
+            <p class="card-text">{{ course.category }}</p>
+            <button class="btn btn-primary">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+</div>
